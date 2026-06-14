@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Score Keeper — App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-frame">
+    <aside class="sidebar hidden" id="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-heading">
+          <div>
+            <h2>Saved games</h2>
+            <p class="muted" id="sidebarUserLabel"></p>
+          </div>
+          <button class="btn-secondary" type="button" id="newGameBtn">New game</button>
+        </div>
+        <div id="gameList" class="game-list"></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="container" id="loginSection">
+        <div class="card">
+          <h1>Welcome Back</h1>
+          <form id="loginForm" novalidate>
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" placeholder="Enter username" required>
+
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="Enter password" required>
+
+            <div class="row space-between">
+              <label class="checkbox"><input type="checkbox" id="remember"> Remember me</label>
+              <a href="#" id="createAccountBtn" class="link">Create account</a>
+            </div>
+
+            <button class="btn-primary" type="submit">Sign In</button>
+          </form>
+        </div>
+      </div>
+
+      <section class="container hidden" id="setupSection">
+        <div class="card">
+          <div class="card-header">
+            <h1>Game Setup</h1>
+            <p class="muted">Add players one at a time on the right, then start the game.</p>
+          </div>
+
+          <div class="setup-row">
+            <div id="playerChips" class="player-chips"></div>
+
+            <form id="addPlayerForm" class="add-player-form">
+              <label for="newPlayerName">Player name</label>
+              <input id="newPlayerName" type="text" placeholder="Player name" required>
+
+              <label for="newPlayerScore">Starting score</label>
+              <input id="newPlayerScore" type="number" placeholder="0" value="0" required>
+
+              <button class="btn-primary" type="submit">Add player</button>
+            </form>
+          </div>
+
+          <div class="row actions">
+            <button class="btn-secondary" type="button" id="logoutBtn">Logout</button>
+            <button class="btn-primary" type="button" id="startGameBtn">Start game</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="container hidden" id="scoreboardSection">
+        <div class="card">
+          <div class="card-header space-between">
+            <div>
+              <h1>Scoreboard</h1>
+              <p class="muted" id="currentPlayerText">Add points to the current player.</p>
+            </div>
+            <div class="scoreboard-meta">
+              <span class="muted" id="currentGameTitle"></span>
+            </div>
+          </div>
+
+          <div id="playerList"></div>
+
+          <form id="scoreForm" class="score-form" novalidate>
+            <label for="scoreInput">Enter points for current player</label>
+            <input id="scoreInput" type="number" placeholder="e.g. 5" required>
+            <div class="row actions">
+              <button type="button" class="btn-secondary" id="backToSetupBtn">Back to setup</button>
+              <button type="submit" class="btn-primary">Add points</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <h2 id="modalTitle">Create Account</h2>
+      <form id="signupForm" novalidate>
+        <label for="newUsername">Username</label>
+        <input id="newUsername" name="username" type="text" placeholder="Choose a username" required>
+
+        <label for="newPassword">Password</label>
+        <input id="newPassword" name="password" type="password" placeholder="Create a password" required>
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm password" required>
+
+        <div class="row space-between">
+          <button class="btn-secondary" type="button" id="cancelSignup">Cancel</button>
+          <button class="btn-primary" type="submit">Create Account</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
